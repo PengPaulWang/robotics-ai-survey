@@ -1,0 +1,82 @@
+{
+	"capabilities": [
+		{
+			"id": "system_modelling",
+			"name": "System modelling & Simulation",
+			"description": "Creating and maintaining accurate virtual representations of real-world assets, processes, or systems, with sufficient fidelity, and running scenario simulations and what-if analyses.",
+			"icon": "Systemmodelling"
+		},
+		{
+			"id": "data_integration",
+			"name": "Data Integration & Processing",
+			"description": "Collecting, fusing, and preparing multi-modal data from various sources (sensors, databases, IoT devices) while handling data quality, missing values, and data harmonisation",
+			"icon": "DataIntegration"
+		},
+		{
+			"id": "realtime_monitoring",
+			"name": "Real-time Monitoring & Control",
+			"description": "Tracking current state and implementing automated control actions, while maintaining synchronisation between physical and digital representations",
+			"icon": "RealtimeMonitoring"
+		},
+		{
+			"id": "predictive_analytics",
+			"name": "Predictive Analytics",
+			"description": "Forecasting future states, behaviours, and outcomes, and identifying trends and potential future scenarios",
+			"icon": "PredictiveAnalytics"
+		},
+		{
+			"id": "anomaly_detection",
+			"name": "Anomaly Detection & Diagnostics",
+			"description": "Identifying, analysing, and explaining unexpected patterns, and performing root cause analysis of system deviations",
+			"icon": "AnomalyDetection"
+		},
+		{
+			"id": "optimisation",
+			"name": "Optimisation",
+			"description": "Finding optimal configurations, parameters, or operations across multiple objectives within defined constraints using mathematical algorithms and computational methods",
+			"icon": "Optimisation"
+		},
+		{
+			"id": "decision_support",
+			"name": "Decision Support",
+			"description": "Providing value, insights, recommendations, and interactive tools to help humans make informed decisions by evaluating alternatives and understanding potential outcomes",
+			"icon": "DecisionSupport"
+		},
+		{
+			"id": "visual_spatial",
+			"name": "Visual & Spatial Intelligence",
+			"description": "Processing visual information, creating informative visualisations, handling geospatial data and spatial relationships",
+			"icon": "VisualSpatial"
+		},
+		{
+			"id": "human_twin_interaction",
+			"name": "Human-Twin Interaction",
+			"description": "Enabling effective and intuitive communication between humans and digital twins, creating interfaces and dashboards for monitoring and control",
+			"icon": "HumanTwinInteraction"
+		},
+		{
+			"id": "twin_orchestration",
+			"name": "Twin Orchestration & Federation",
+			"description": "Managing relationships, data flow, and learning across multiple interconnected digital twins, creating hierarchical or networked twin ecosystems",
+			"icon": "TwinOrchestration"
+		},
+		{
+			"id": "knowledge_representation",
+			"name": "Knowledge Representation",
+			"description": "Capturing and utilising domain expertise and learned insights, integrating semantic models and ontologies with AI models",
+			"icon": "KnowledgeRepresentation"
+		},
+		{
+			"id": "security_privacy",
+			"name": "Security & Privacy Management",
+			"description": "Protecting data and functionality while enabling appropriate access, managing identity, authentication, and data protection",
+			"icon": "SecurityPrivacy"
+		},
+		{
+			"id": "vvuq",
+			"name": "Verification, Validation & Uncertainty Quantification",
+			"description": "Ensuring reliable, robust, and trustworthy performance and behaviour for the coupled system, quantifying uncertainties in inputs, models and outputs, and testing and calibrating the twin against real-world performance",
+			"icon": "VVUQ"
+		}
+	]
+}

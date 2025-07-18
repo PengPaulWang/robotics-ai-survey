@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI-Enabled Digital Twin Assurance Challenges",
+  "description": "Schema for the AI-Enabled Digital Twin Assurance Challenges data",
+  "type": "object",
+  "required": ["challenges"],
+  "properties": {
+    "challenges": {
+      "type": "array",
+      "description": "List of AI-DT assurance challenges",
+      "items": {
+        "type": "object",
+        "required": [
+          "number", 
+          "title", 
+          "description", 
+          "sector", 
+          "significance", 
+          "complexity", 
+          "readiness",
+          "capabilities"
+        ],
+        "properties": {
+          "number": {
+            "type": "integer",
+            "description": "Unique identifier for the challenge",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Short title for the challenge"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the challenge"
+          },
+          "sector": {
+            "type": "string",
+            "description": "Industry sector the challenge belongs to",
+            "enum": [
+              "Energy & Utilities",
+              "Health & Well-Being",
+              "Manufacturing",
+              "Natural Environment",
+              "Transportation & Supply Chains",
+              "Built Environment",
+              "Government",
+              "Cross-Cutting"
+            ]
+          },
+          "significance": {
+            "type": "integer",
+            "description": "Rating for the potential impact on digital twin ecosystem (1-3 scale)",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "complexity": {
+            "type": "integer",
+            "description": "Rating for technical and organizational difficulty (1-3 scale)",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "readiness": {
+            "type": "integer",
+            "description": "Rating for current level of community preparedness (1-3 scale)",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "capabilities": {
+            "type": "array",
+            "description": "List of AI-DT capability IDs associated with the challenge",
+            "items": {
+              "type": "string",
+              "enum": [
+                "system_modelling",
+                "data_integration",
+                "realtime_monitoring",
+                "predictive_analytics",
+                "anomaly_detection",
+                "optimisation",
+                "decision_support",
+                "visual_spatial",
+                "human_twin_interaction",
+                "twin_orchestration",
+                "knowledge_representation",
+                "security_privacy",
+                "vvuq"
+              ]
+            },
+            "minItems": 1
+          },
+          "rationale": {
+            "type": "string",
+            "description": "Optional justification or context for ratings or challenge definition"
+          },
+          "related_challenges": {
+            "type": "array",
+            "description": "Optional list of numbers of related challenges",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "date_added": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the challenge was initially added"
+          },
+          "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date the challenge was last modified"
+          },
+          "references": {
+            "type": "array",
+            "description": "Optional list of references or sources",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rating_confidence": {
+            "type": "string",
+            "enum": ["High", "Medium", "Low"],
+            "description": "Optional confidence level in the assigned S/C/R ratings"
+          }
+        }
+      }
+    }
+  }
+}

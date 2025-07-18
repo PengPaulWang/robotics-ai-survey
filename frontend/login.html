@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Rating Survey - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .auth-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 900px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .auth-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .auth-body {
+            padding: 2rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .demographics-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .form-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-section h5 {
+            color: #495057;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+        
+        .switch-form {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .switch-form a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        .form-help {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        .required-asterisk {
+            color: #dc3545;
+        }
+        
+        .privacy-notice {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .privacy-notice h6 {
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+        
+        .privacy-notice small {
+            color: #424242;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-container {
+                margin: 10px;
+            }
+            
+            .auth-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container mx-auto">
+            <div class="auth-header">
+                <h2><i class="fas fa-poll-h me-2"></i>Card Rating Survey</h2>
+                <p class="mb-0">Help us understand AI capabilities assessment</p>
+            </div>
+            
+            <div class="auth-body">
+                <div id="alertContainer"></div>
+                
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form">
+                    <h3 class="mb-4">Welcome Back</h3>
+                    <form id="loginFormElement">
+                        <div class="form-section">
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">Email Address <span class="required-asterisk">*</span></label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Password <span class="required-asterisk">*</span></label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sign-in-alt me-2"></i>Login
+                        </button>
+                    </form>
+                    <div class="switch-form">
+                        <p>Don't have an account? <a href="#" onclick="switchToRegister()">Sign up here</a></p>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="registerForm" class="auth-form" style="display: none;">
+                    <h3 class="mb-4">Join Our Survey</h3>
+                    
+                    <div class="privacy-notice">
+                        <h6><i class="fas fa-shield-alt me-2"></i>Privacy Notice</h6>
+                        <small>Your demographic information is collected for research purposes only and will be kept anonymous. We do not share personal information with third parties.</small>
+                    </div>
+                    
+                    <form id="registerFormElement">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h5><i class="fas fa-user me-2"></i>Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name <span class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name <span class="required-asterisk">*</span></label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address <span class="required-asterisk">*</span></label>
+                                <input type="email" class="form-control" id="email" required>
+                                <div class="form-help">We'll use this to send you survey updates (optional)</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password <span class="required-asterisk">*</span></label>
+                                <input type="password" class="form-control" id="password" required minlength="6">
+                                <div class="form-help">Minimum 6 characters</div>
+                            </div>
+                        </div>
+
+                        <!-- Demographics -->
+                        <div class="demographics-section">
+                            <h5><i class="fas fa-chart-pie me-2"></i>Demographics (Required for Research)</h5>
+                            <p class="text-muted mb-3">This information helps us understand different perspectives and is kept completely anonymous.</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="ageGroup" class="form-label">Age Group <span class="required-asterisk">*</span></label>
+                                    <select class="form-control" id="ageGroup" required>
+                                        <option value="">Select age group</option>
+                                        <option value="18-24">18-24</option>
+                                        <option value="25-34">25-34</option>
+                                        <option value="35-44">35-44</option>
+                                        <option value="45-54">45-54</option>
+                                        <option value="55-64">55-64</option>
+                                        <option value="65+">65+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="gender" class="form-label">Gender <span class="required-asterisk">*</span></label>
+                                    <select class="form-control" id="gender" required>
+                                        <option value="">Select gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="non-binary">Non-binary</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="profession" class="form-label">Profession/Industry <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="profession" required>
+                                    <option value="">Select profession</option>
+                                    <option value="technology">Technology/IT</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="education">Education</option>
+                                    <option value="finance">Finance/Banking</option>
+                                    <option value="engineering">Engineering</option>
+                                    <option value="research">Research/Academia</option>
+                                    <option value="government">Government/Public Service</option>
+                                    <option value="consulting">Consulting</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="energy">Energy/Utilities</option>
+                                    <option value="transportation">Transportation/Logistics</option>
+                                    <option value="retail">Retail/Sales</option>
+                                    <option value="media">Media/Communications</option>
+                                    <option value="legal">Legal</option>
+                                    <option value="student">Student</option>
+                                    <option value="retired">Retired</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="educationLevel" class="form-label">Education Level <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="educationLevel" required>
+                                    <option value="">Select education level</option>
+                                    <option value="high-school">High School</option>
+                                    <option value="some-college">Some College</option>
+                                    <option value="associate">Associate Degree</option>
+                                    <option value="bachelors">Bachelor's Degree</option>
+                                    <option value="masters">Master's Degree</option>
+                                    <option value="phd">PhD/Doctorate</option>
+                                    <option value="professional">Professional Degree (JD, MD, etc.)</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="background" class="form-label">Technical Background <span class="required-asterisk">*</span></label>
+                                <select class="form-control" id="background" required>
+                                    <option value="">Select background</option>
+                                    <option value="ai-ml">AI/Machine Learning</option>
+                                    <option value="software-dev">Software Development</option>
+                                    <option value="data-science">Data Science/Analytics</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="engineering">Engineering (non-software)</option>
+                                    <option value="research">Research/Academia</option>
+                                    <option value="business">Business/Management</option>
+                                    <option value="design">Design/UX</option>
+                                    <option value="operations">Operations/IT</option>
+                                    <option value="non-technical">Non-technical</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="country" class="form-label">Country (Optional)</label>
+                                    <input type="text" class="form-control" id="country" placeholder="e.g., United Kingdom">
+                                    <div class="form-help">This helps us understand global perspectives</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="experience" class="form-label">Years of Experience (Optional)</label>
+                                    <select class="form-control" id="experience">
+                                        <option value="">Select experience</option>
+                                        <option value="0-2">0-2 years</option>
+                                        <option value="3-5">3-5 years</option>
+                                        <option value="6-10">6-10 years</option>
+                                        <option value="11-15">11-15 years</option>
+                                        <option value="16-20">16-20 years</option>
+                                        <option value="20+">20+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to participate in this research survey and consent to the anonymous use of my responses <span class="required-asterisk">*</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-user-plus me-2"></i>Create Account & Start Survey
+                        </button>
+                    </form>
+                    <div class="switch-form">
+                        <p>Already have an account? <a href="#" onclick="switchToLogin()">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Configuration - Update this for production
+        const API_BASE_URL = 'http://localhost:5001'; // Change this for production
+        // const API_BASE_URL = 'https://your-backend-app.herokuapp.com';
+
+        function showAlert(message, type = 'danger') {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertId = 'alert-' + Date.now();
+            alertContainer.innerHTML = `
+                <div id="${alertId}" class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                const alert = document.getElementById(alertId);
+                if (alert) {
+                    alert.classList.remove('show');
+                    setTimeout(() => alert.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        function switchToRegister() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('alertContainer').innerHTML = '';
+        }
+
+        function switchToLogin() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('alertContainer').innerHTML = '';
+        }
+
+        function setLoading(formId, isLoading) {
+            const form = document.getElementById(formId);
+            if (isLoading) {
+                form.classList.add('loading');
+                const submitButton = form.querySelector('button[type="submit"]');
+                if (formId === 'loginFormElement') {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Logging in...';
+                } else {
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating account...';
+                }
+            } else {
+                form.classList.remove('loading');
+                const submitButton = form.querySelector('button[type="submit"]');
+                if (formId === 'loginFormElement') {
+                    submitButton.innerHTML = '<i class="fas fa-sign-in-alt me-2"></i>Login';
+                } else {
+                    submitButton.innerHTML = '<i class="fas fa-user-plus me-2"></i>Create Account & Start Survey';
+                }
+            }
+        }
+
+        function validateForm(formData) {
+            const errors = [];
+            
+            if (formData.firstName && formData.firstName.trim().length < 2) {
+                errors.push('First name must be at least 2 characters long');
+            }
+            
+            if (formData.lastName && formData.lastName.trim().length < 2) {
+                errors.push('Last name must be at least 2 characters long');
+            }
+            
+            if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                errors.push('Please enter a valid email address');
+            }
+            
+            if (formData.password && formData.password.length < 6) {
+                errors.push('Password must be at least 6 characters long');
+            }
+            
+            return errors;
+        }
+
+        // Login Form Handler
+        document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            setLoading('loginFormElement', true);
+
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+
+            // Basic validation
+            const errors = validateForm({ email, password });
+            if (errors.length > 0) {
+                showAlert(errors.join('<br>'));
+                setLoading('loginFormElement', false);
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    showAlert('Login successful! Redirecting to survey...', 'success');
+                    
+                    // Redirect to main survey page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(data.error || 'Login failed. Please check your credentials.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                showAlert('Network error. Please check your connection and try again.');
+            } finally {
+                setLoading('loginFormElement', false);
+            }
+        });
+
+        // Registration Form Handler
+        document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            setLoading('registerFormElement', true);
+
+            const formData = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value,
+                demographics: {
+                    ageGroup: document.getElementById('ageGroup').value,
+                    profession: document.getElementById('profession').value,
+                    gender: document.getElementById('gender').value,
+                    background: document.getElementById('background').value,
+                    educationLevel: document.getElementById('educationLevel').value,
+                    country: document.getElementById('country').value.trim(),
+                    experience: document.getElementById('experience').value
+                }
+            };
+
+            // Validate form
+            const errors = validateForm(formData);
+            
+            // Check required demographic fields
+            const requiredDemographics = ['ageGroup', 'profession', 'gender', 'background', 'educationLevel'];
+            const missingFields = requiredDemographics.filter(field => !formData.demographics[field]);
+            if (missingFields.length > 0) {
+                errors.push(`Please complete all required demographic fields: ${missingFields.join(', ')}`);
+            }
+
+            // Check consent
+            if (!document.getElementById('agreeTerms').checked) {
+                errors.push('Please agree to participate in the research survey');
+            }
+
+            if (errors.length > 0) {
+                showAlert(errors.join('<br>'));
+                setLoading('registerFormElement', false);
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    localStorage.setItem('authToken', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    showAlert('Registration successful! Welcome to the survey!', 'success');
+                    
+                    // Redirect to main survey page
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(data.error || 'Registration failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                showAlert('Network error. Please check your connection and try again.');
+            } finally {
+                setLoading('registerFormElement', false);
+            }
+        });
+
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            if (token) {
+                // Verify token is still valid
+                fetch(`${API_BASE_URL}/user/profile`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // User is already logged in, redirect to survey
+                        window.location.href = 'index.html';
+                    } else {
+                        // Token is invalid, clear storage
+                        localStorage.removeItem('authToken');
+                        localStorage.removeItem('user');
+                    }
+                })
+                .catch(() => {
+                    // Network error, clear storage
+                    localStorage.removeItem('authToken');
+                    localStorage.removeItem('user');
+                });
+            }
+        });
+
+        // Form enhancements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Auto-format email input
+            document.getElementById('email').addEventListener('blur', (e) => {
+                e.target.value = e.target.value.trim().toLowerCase();
+            });
+
+            document.getElementById('loginEmail').addEventListener('blur', (e) => {
+                e.target.value = e.target.value.trim().toLowerCase();
+            });
+
+            // Password strength indicator (basic)
+            document.getElementById('password').addEventListener('input', (e) => {
+                const password = e.target.value;
+                const helpText = e.target.nextElementSibling;
+                
+                if (password.length === 0) {
+                    helpText.textContent = 'Minimum 6 characters';
+                    helpText.className = 'form-help';
+                } else if (password.length < 6) {
+                    helpText.textContent = 'Too short - minimum 6 characters';
+                    helpText.className = 'form-help text-danger';
+                } else if (password.length >= 6 && password.length < 8) {
+                    helpText.textContent = 'Good - consider making it longer';
+                    helpText.className = 'form-help text-warning';
+                } else {
+                    helpText.textContent = 'Strong password';
+                    helpText.className = 'form-help text-success';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

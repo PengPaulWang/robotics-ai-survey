@@ -1,0 +1,15 @@
+.DS_Store
+CLAUDE.md
+data_pw.txt
+
+backend/.env
+backend/.env.example
+backend/.package_before_deployment.json
+backend/.server_old.js
+
+frontend-old-*/
+
+index_old.html
+frontend/js/config_before_deployment.js
+frontend/js/main_before_mongodb.js
+frontend/js/main_old.js

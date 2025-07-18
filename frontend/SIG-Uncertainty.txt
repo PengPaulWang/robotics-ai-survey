@@ -1,0 +1,70 @@
+Title | First Name | Last Name | Email | Dietary | Theme | Institution
+Dr. | Lloyd | Fletcher | lloyd.fletcher@ukaea.uk | Vegetarian | Uncertainty and Trust | UK Atomic Energy Authority
+Dr. | Nicola | Massarotti | nicola.massarotti@uniparthenope.it |  | Uncertainty and Trust | University of Napoli "Parthenope"
+Dr. | Bertrand | Nortier | b.nortier@exeter.ac.uk | Vegetarian | Uncertainty and Trust | University of Exeter
+Dr. | Steven Xiaotian | Dai | xiaotian.dai@york.ac.uk |  | Uncertainty and Trust | University of York
+Dr. | Lara | Harris | ae0192@coventry.ac.uk | Vegetarian | Uncertainty and Trust | Coventry University
+Dr. | Robin | Mazumder | robin.Mazumder@uwaterloo.ca | Vegetarian | Uncertainty and Trust | Future Cities Institute, University of Waterloo
+Dr. | Ilir | Gashi | ilir.gashi.1@city.ac.uk |  | Uncertainty and Trust | City St. George's, University of London
+
+
+
+Summary for SIG Uncertainty and Trust
+
+Key Points for SIG Uncertainty and Trust:
+
+1. Objectives and Activities:
+- Facilitate knowledge exchange and stimulate new cross-disciplinary collaborations and innovations in digital twins, with a focus on uncertainty and trust.
+- Accelerate underpinning research for robust, resilient, and trusted digital twins.
+- Articulate challenges and help set the UK digital twin agenda.
+- Support pilot research projects and feasibility studies.
+- Engage in outreach, skills development, and sustainability activities.
+
+2. Membership:
+- Open to researchers, industry professionals, and policymakers interested in uncertainty and trust in digital twins.
+- Membership tiers: General Members, Active Contributors, SIG Decision-Makers (Lead, Deputy, ECR Rep), and Executive Board Members.
+- Apply via the DTNet+ SIG website.
+
+3. Engagement and Outputs:
+- Regular meetings (virtual/in-person), contributions to DTNet+ events, and annual conferences.
+- Produce white papers, reports, webinars, and training sessions.
+- Develop open-source tools, training resources, best practice guides, and define research challenges and use cases.
+- Collaborate with other SIGs and industry partners.
+
+4. Governance:
+- Regular review of committee members.
+- Decisions by consensus or majority vote.
+- Transparent reporting and adherence to ethical standards and EDI principles.
+
+5. Communication:
+- Provide updates for the website and online community.
+- Use social media, newsletters, and regular emails.
+- Engage with external stakeholders and promote funding opportunities.
+
+6. White Papers:
+- Participate in the development of authoritative reports to guide research, policy, and industry applications.
+- Topics are supported and reviewed by the DTNet+ White Paper working group.
+
+7. Funding and Spending:
+- Each SIG receives up to £25,000 until 31st July 2028.
+- Funding can be used for:
+    • Venue hire
+    • Catering (meals, refreshments)
+    • Accommodation/subsistence for presenters/facilitators
+    • Travel for presenters/facilitators
+    • A/V hire
+    • Employing a local administrator (up to 30% of allocation, DI only basis)
+- Claims are made via PO and invoice, with timesheets required for administrator work.
+- Additional funds may be available for ambitious activities.
+- Visitor Programme: Funding for travel, accommodation, and subsistence for visitor placements (including international and industry exchanges).
+
+8. Contacts:
+- For inquiries or collaboration, contact Jane Cavanagh – jcavanagh@turing.ac.uk
+
+SIG Uncertainty and Trust should focus on collaboration, knowledge sharing, defining research challenges, producing white papers, and making effective use of allocated funding for impactful activities.
+
+
+
+How does the Visitors scheme work?
+The DTNet+ Visitor Programme provides funding for up to 20 visitor placement schemes over 5 years, including international visitors, industry placements, and research exchanges. The funds cover travel, accommodation, subsistence, and other expenses associated with facilitating and enabling placements, on a Directly Incurred (DI) cost basis. To participate, SIG members or partners propose a visitor placement aligned with SIG objectives. Approved placements are reimbursed via invoice and claim, following DTNet+ and Turing procedures. This scheme is intended to foster collaboration, knowledge exchange, and skills development across academia, industry, and international partners.
+

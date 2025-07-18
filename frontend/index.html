@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Enabled Digital Twin Assurance Challenges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <button id="scrollToTopBtn" class="btn btn-secondary">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+    
+    <div class="main-container">
+        <aside id="filterSidebar" class="filter-sidebar">
+            <button id="toggleSidebar" class="sidebar-toggle d-md-none">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+            
+            <div class="sidebar-content">
+                <div class="sidebar-logo text-center mb-4">
+                    <a href="https://www.dtnetplus.ac.uk/" target="_blank">
+                        <img class="logo" src="./images/logo.png" alt="DTNet+ Logo">
+                    </a>
+                </div>
+                
+                <div class="sidebar-header d-flex justify-content-between align-items-center mb-3">
+                    <h4>Filters</h4>
+                    <button class="close-sidebar d-md-none">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                <div class="search-container mb-4">
+                    <label for="searchBox">Search...</label>
+                    <input autocomplete="off" type="text" name="searchBox" id="searchBox" placeholder="Search cards..." class="form-control input" />
+                </div>
+                
+                <div class="filter-section mb-4">
+                    <h5 class="filter-heading">Sector</h5>
+                    <div class="sector-filter">
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input energy-checkbox" type="checkbox" value="energy" role="switch" id="flexSwitchCheckEnergy" checked>
+                            <label class="form-check-label" for="flexSwitchCheckEnergy">Energy & Utilities</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input manufacturing-checkbox" type="checkbox" role="switch" value="manufacturing" id="flexSwitchCheckManufacturing" checked>
+                            <label class="form-check-label" for="flexSwitchCheckManufacturing">Manufacturing</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input health-checkbox" type="checkbox" data-sector="" value="health" role="switch" id="flexSwitchCheckHealth" checked>
+                            <label class="form-check-label" for="flexSwitchCheckHealth">Health & Well-Being</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input built-environment-checkbox" type="checkbox" value="built environment" role="switch" id="flexSwitchCheckBuiltEnvironment" checked>
+                            <label class="form-check-label" for="flexSwitchCheckBuiltEnvironment">Built Environment</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input natural-environment-checkbox" type="checkbox" value="natural environment" role="switch" id="flexSwitchCheckNaturalEnvironment" checked>
+                            <label class="form-check-label" for="flexSwitchCheckNaturalEnvironment">Natural Environment</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input transportation-checkbox" type="checkbox" value="transportation" role="switch" id="flexSwitchCheckTransportation" checked>
+                            <label class="form-check-label" for="flexSwitchCheckTransportation">Transportation & Supply Chains</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input government-checkbox" type="checkbox" value="government" role="switch" id="flexSwitchCheckGovernment" checked>
+                            <label class="form-check-label" for="flexSwitchCheckGovernment">Government</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                            <input autocomplete="off" class="form-check-input cross-cutting-checkbox" type="checkbox" value="cross-cutting" role="switch" id="flexSwitchCheckCrossCutting" checked>
+                            <label class="form-check-label" for="flexSwitchCheckCrossCutting">Cross-Cutting</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section mb-4">
+                    <h5 class="filter-heading">Scores</h5>
+                    <div class="scores-filter">
+                        <div class="score-group mb-3">
+                            <div class="score-label">Significance</div>
+                            <div class="d-flex align-items-center">
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="1">1 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="2">2 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="3">3 <i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <input autocomplete="off" class="score" type="hidden" name="Significance" value="all">
+                        </div>
+                        
+                        <div class="score-group mb-3">
+                            <div class="score-label">Complexity</div>
+                            <div class="d-flex align-items-center">
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="1">1 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="2">2 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="3">3 <i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <input autocomplete="off" class="score" type="hidden" name="Complexity" value="all">
+                        </div>
+                        
+                        <div class="score-group">
+                            <div class="score-label">Readiness</div>
+                            <div class="d-flex align-items-center">
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="1">1 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="2">2 <i class="fa-solid fa-star"></i></div>
+                                <div class="btn btn-sm btn-star btn-light me-1" data-star="3">3 <i class="fa-solid fa-star"></i></div>
+                            </div>
+                            <input autocomplete="off" class="score" type="hidden" name="Readiness" value="all">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <div class="d-flex align-items-center mb-2">
+                        <h5 class="filter-heading mb-0 me-2">AI-DT Capabilities</h5>
+                    </div>
+                    <div class="ai-capabilities-filter">
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-diagram-project fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="system_modelling" role="switch" id="SystemModelling" checked>
+                                    <label class="form-check-label" for="SystemModelling">System Modelling</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-database fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="data_integration" role="switch" id="DataIntegration" checked>
+                                    <label class="form-check-label" for="DataIntegration">Data Integration</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-sliders fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="optimisation" role="switch" id="Optimisation" checked>
+                                    <label class="form-check-label" for="Optimisation">Optimisation</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-chart-line fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="predictive_analytics" role="switch" id="PredictiveAnalytics" checked>
+                                    <label class="form-check-label" for="PredictiveAnalytics">Predictive Analytics</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-triangle-exclamation fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="anomaly_detection" role="switch" id="AnomalyDetection" checked>
+                                    <label class="form-check-label" for="AnomalyDetection">Anomaly Detection</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-clipboard-check fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="decision_support" role="switch" id="DecisionSupport" checked>
+                                    <label class="form-check-label" for="DecisionSupport">Decision Support</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-map fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="visual_spatial" role="switch" id="VisualSpatial" checked>
+                                    <label class="form-check-label" for="VisualSpatial">Visual & Spatial</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-user-gear fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="human_twin_interaction" role="switch" id="HumanTwinInteraction" checked>
+                                    <label class="form-check-label" for="HumanTwinInteraction">Human-Twin Interaction</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-cubes fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="twin_orchestration" role="switch" id="TwinOrchestration" checked>
+                                    <label class="form-check-label" for="TwinOrchestration">Twin Orchestration</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-brain fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="knowledge_representation" role="switch" id="KnowledgeRepresentation" checked>
+                                    <label class="form-check-label" for="KnowledgeRepresentation">Knowledge Representation</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-check-double fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="vvuq" role="switch" id="VVUQ" checked>
+                                    <label class="form-check-label" for="VVUQ">VVUQ</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-shield-halved fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="security_privacy" role="switch" id="SecurityPrivacy" checked>
+                                    <label class="form-check-label" for="SecurityPrivacy">Security & Privacy</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="capability-group mb-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-gauge-high fa-fw me-2"></i>
+                                <div class="form-check form-switch">
+                                    <input autocomplete="off" class="form-check-input sectorFilter" type="checkbox" value="realtime_monitoring" role="switch" id="RealtimeMonitoring" checked>
+                                    <label class="form-check-label" for="RealtimeMonitoring">Real-time Monitoring</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Clear Filters Button -->
+                <div class="mt-4">
+                    <button class="btn btn-outline-secondary w-100" onclick="clearAllFilters()">
+                        <i class="fas fa-times me-2"></i>Clear All Filters
+                    </button>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">AI-Enabled Digital Twin Challenges</h5>
+                                <p class="card-text" style="font-size: 14px;">Below are individual challenges related to the assurance of AI-enabled digital twin technologies across various sectors. Each challenge has different components which can be filtered by sector, capability, and other attributes. The challenges reflect key requirements to ensure the reliability and trustworthiness of artificial intelligence in digital twin applications.</p>
+                                <br>
+                                <ul class="list-group list-group-flush" style="font-size: 14px;">
+                                    <li class="list-group-item"><b>Significance:</b> The potential impact of addressing this challenge on digital twin ecosystem, including benefits to safety, performance, adoption, and broader societal value.</li>
+                                    <li class="list-group-item"><b>Complexity:</b> The combined technical, organisational, and regulatory difficulty of addressing the challenge.</li>
+                                    <li class="list-group-item"><b>Readiness:</b> The current level of community preparedness to address the challenge, including available expertise, methods, tools, consensus on approaches, and access to necessary resources.</li>
+                                </ul>
+                                <br>
+                                <p class="card-text" style="font-size: 14px;">This webpage has been adapted from the <a href="https://collaro-it.github.io/advice-challenge/">AI Carbon Challenge Cards</a> produced by the <a href="https://www.turing.ac.uk/research/research-projects/advice">AI for Decarbonisation's Virtual Centre for Excellence (ADViCE)</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-section"></div>
+                
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleSidebarBtn = document.getElementById('toggleSidebar');
+            const closeSidebarBtn = document.querySelector('.close-sidebar');
+            const sidebar = document.getElementById('filterSidebar');
+            
+            if (toggleSidebarBtn && sidebar) {
+                toggleSidebarBtn.addEventListener('click', function() {
+                    sidebar.classList.toggle('show-sidebar');
+                });
+            }
+            
+            if (closeSidebarBtn && sidebar) {
+                closeSidebarBtn.addEventListener('click', function() {
+                    sidebar.classList.remove('show-sidebar');
+                });
+            }
+        });
+    </script>
+    
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
