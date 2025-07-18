@@ -5,7 +5,7 @@ data_pw.txt
 backend/.env
 backend/.env.example
 backend/package_before_deployment.json
-backend/.server_old.js
+backend/server_old.js
 
 frontend-old-*/
 
