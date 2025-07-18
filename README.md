@@ -1,1 +1,1 @@
-# robotics-ai-survery
+# robotics-ai-survey
